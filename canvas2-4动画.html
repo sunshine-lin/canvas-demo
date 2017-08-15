@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas2</title>
+	<style>
+	body{
+		background: #000;
+	}
+		#c1{
+			background: #fff;
+		}
+		#unSuportCanvasText{
+			color: #fff;
+		}
+	</style>
+	<script>
+	// 弧度公式  弧度 = 角度 * Math.PI/180;
+		window.onload = function () {
+			var oC = document.querySelector("#c1");
+			var oGC = oC.getContext("2d");
+			oGC.translate(100,100) // x, y 偏移
+			// oGC.rotate(-45*Math.PI/180) // 弧度 deg*Math.PI/180  以左上角为顶点 deg为正数 顺时针
+			// oGC.scale(2,2) // x轴放大倍数 y轴放大倍数
+			
+			// oGC.beginPath()
+			// oGC.moveTo(200,200)
+			var num = 0;
+			var num2 = 0;
+			var value = 1;
+			// var scaleValue = num*value*1/50;
+			setInterval(function () {
+				num++;
+				if (num2 == 100) {
+					value = -1;
+				} else if (num2 == 0) {
+					value = 1
+				}
+				num2 += value;
+				oGC.save()
+				oGC.clearRect(-100,-100,400,400)
+				oGC.rotate(num * Math.PI/180)
+				oGC.translate(-num2*1/100,-num2*1/100);
+				oGC.scale(num2*1/50, num2*1/50)
+				oGC.fillRect(0,0,50,50);
+				oGC.restore()
+			},30)
+		}
+	</script>
+</head>
+<body>
+<!-- canvas 默认大小 width 300 height 150 -->
+<!-- ie8不支持canvas  兼容 在canvas里面写兼容 span -->
+	<canvas id="c1" width="400" height="400">
+		<span id="unSuportCanvasText">不支持canvas浏览器</span>
+	</canvas>
+</body>
+</html>
