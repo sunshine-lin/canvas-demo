@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas2</title>
+    <style>
+    body {
+        background: #000;
+    }
+
+    #c1 {
+        background: #fff;
+    }
+
+    #unSuportCanvasText {
+        color: #fff;
+    }
+    </style>
+    <script>
+    // 弧度公式  弧度 = 角度 * Math.PI/180;
+    window.onload = function() {
+        var oC = document.querySelector("#c1");
+        var oGC = oC.getContext("2d");
+        var yImg = new Image();
+
+
+        yImg.onload = function() {
+            draw(this);
+        }
+        yImg.src = '2.png';
+
+        function draw() {
+            oGC.drawImage(yImg, 0, 0);
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- canvas 默认大小 width 300 height 150 -->
+    <!-- ie8不支持canvas  兼容 在canvas里面写兼容 span -->
+    <div>
+    	<button>left</button><button>right</button>
+    </div>
+    <canvas id="c1">
+        <span id="unSuportCanvasText">不支持canvas浏览器</span>
+    </canvas>
+</body>
+
+</html>
